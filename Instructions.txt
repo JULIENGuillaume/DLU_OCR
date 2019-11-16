@@ -1,0 +1,17 @@
+Tesseract-OCR:
+    Install tesseract-ocr 4 from https://github.com/tesseract-ocr/tesseract
+    Install additional data files, like equ for math or fra for french detection from https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
+    Run tesseract -v and check that v4.x is installed
+
+Python:
+    Tested with python 3.6
+    Install requirements.txt
+
+Run:
+    python unstructured_ocr.py --east frozen_east_text_detection.pb --image path_to_image
+    Use --help to detail arguments
+    Two important arguments:    --padding can help is a zone of text is correctly identified as such, but the wrong
+                                text is read. A good idea would be to increase the value by 0.01 at a time, starting from 0.00
+                                --min-confidence can be used to exclude zone that are not text. The closer the value is
+                                to 1, the more demanding will the filter be. Default at 0.5.
+    Don't touch the east parameter.
